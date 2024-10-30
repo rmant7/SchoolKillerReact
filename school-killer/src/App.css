@@ -1,0 +1,196 @@
+h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 48px;
+  color: #4fc3f7;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  transition: opacity 0.5s ease;
+}
+
+.scrolled h1 {
+  opacity: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e0f7fa;
+}
+
+h2 {
+  color: #00796b;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.file-item {
+  margin: 10px;
+  text-align: center;
+}
+
+.file-image {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.file-image:hover {
+  transform: scale(1.05);
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.upload-section input {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4fc3f7;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #81d4fa;
+}
+
+button:focus {
+  outline: none;
+}
+
+.upload-section button {
+  margin-top: 10px;
+}
+
+
+button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-wrapper:hover .delete-button {
+  opacity: 1;
+}
+
+.file-image.selected {
+  border: 3px solid blue;
+}
+
+.file-image {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.file-image:hover {
+  transform: scale(1.05);
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.file-item {
+  position: relative;
+}
+
+.file-image {
+  max-width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.file-image.zoomed {
+  transform: scale(3);
+  z-index: 1;
+}
+
+.zoom-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: transparent;
+  border: none;
+  color: blue;
+  font-size: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.image-wrapper:hover .zoom-button {
+  opacity: 1;
+}
+
+.upload-section {
+  margin: 20px;
+}
+
+.upload-section button {
+  margin: 5px;
+  padding: 10px 15px;
+  color: black;
+  background-color: #4fc3f7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.upload-section button:disabled {
+  background-color: lightgrey;
+  cursor: not-allowed;
+}
+
+.upload-section button:not(:disabled):hover {
+  background-color: #3bb8e2;
+}

@@ -1,0 +1,18 @@
+{
+  "ru": {
+    "header": "Школьный убийца",
+    "addTask": "Добавить задание",
+    "viewSolution": "Проверить решение",
+    "solve": "Решить",
+    "solutionPage": "Решение",
+    "checkSolutionPage": "Проверка решения"
+  },
+  "en": {
+    "header": "School Killer",
+    "addTask": "Add Task",
+    "viewSolution": "Check Solution",
+    "solve": "Solve",
+    "solutionPage": "Solution",
+    "checkSolutionPage": "Check Solution"
+  }
+}
