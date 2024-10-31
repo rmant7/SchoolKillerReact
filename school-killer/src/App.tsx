@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './components/Header';
-import './App.css';
+import './index.css'; // Ensure to import your CSS file here
 import localization from './localization.json';
+import yourImage from './images/image.jpg'; // Import your image here
 
 const App: React.FC = () => {
+    // State variables
     const [files, setFiles] = useState<File[]>([]);
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
     const [zoomedImageIndex, setZoomedImageIndex] = useState<number | null>(null);
     const [locale, setLocale] = useState<'en' | 'ru'>('en');
+    
+    // Dropdown states
+    const [selectedClass, setSelectedClass] = useState<string>('1');
+    const [solutionLanguage, setSolutionLanguage] = useState<string>('English'); 
+    const [sourceLanguage, setSourceLanguage] = useState<string>('English');
+    const [explanationType, setExplanationType] = useState<string>('Brief explanation');
+    
+    // New state for text area
+    const [taskDescription, setTaskDescription] = useState<string>('');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -72,7 +84,7 @@ const App: React.FC = () => {
     }, [zoomedImageIndex]);
 
     return (
-        <div>
+        <div className="app-container">
             <Header />
             <div className="image-container">
                 {files.map((file, index) => {
@@ -115,24 +127,99 @@ const App: React.FC = () => {
                     );
                 })}
             </div>
+
+            {/* New Features Section Start */}
             <div className="upload-section">
+                {/* Image Display Above the "Add Task" Label */}
+                <div className="image-display">
+                    <img
+                        src={yourImage} // Use the imported image here
+                        alt="Descriptive Alt Text"
+                        className="above-upload-image"
+                    />
+                </div>
+
                 <h2>{localization[locale].addTask}</h2>
-                <input type="file" multiple onChange={handleFileChange} />
-                <button
-                    onClick={handleSolutionClick}
-                    disabled={selectedImageIndex === null}
-                    style={{ backgroundColor: selectedImageIndex === null ? 'lightgrey' : '#4fc3f7' }}
-                >
-                    {localization[locale].viewSolution}
-                </button>
-                <button
-                    onClick={handleCheckSolutionClick}
-                    disabled={selectedImageIndex === null}
-                    style={{ backgroundColor: selectedImageIndex === null ? 'lightgrey' : '#4fc3f7' }}
-                >
-                    {localization[locale].solve}
+
+                <div className="input-container">
+                    {/* Text Area for Task Description */}
+                    <textarea
+                        className="task-description"
+                        placeholder="Insert task description here..."
+                        value={taskDescription}
+                        onChange={(e) => setTaskDescription(e.target.value)}
+                    />
+
+                    {/* File Input Area */}
+                    <input type="file" multiple onChange={handleFileChange} />
+                </div>
+
+                {/* Class Dropdown */}
+                <div className="dropdown-container">
+                    <label htmlFor="class-select">Class:</label>
+                    <select id="class-select" value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
+                        {[...Array(12)].map((_, i) => (
+                            <option key={i + 1} value={i + 1}>{i + 1}</option>
+                        ))}
+                    </select>
+                </div>
+
+                {/* Solution Language Dropdown */}
+                <div className="dropdown-container">
+                    <label htmlFor="solution-language-select">Solution language:</label>
+                    <select id="solution-language-select" value={solutionLanguage} onChange={(e) => setSolutionLanguage(e.target.value)}>
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Russian">Russian</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Portuguese">Portuguese</option>
+                        <option value="Arabic">Arabic</option>
+                        <option value="Hindi">Hindi</option>
+                        {/* Add more languages as necessary */}
+                    </select>
+                </div>
+
+                {/* Source Language Dropdown */}
+                <div className="dropdown-container">
+                    <label htmlFor="source-language-select">Source language of the task:</label>
+                    <select id="source-language-select" value={sourceLanguage} onChange={(e) => setSourceLanguage(e.target.value)}>
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Russian">Russian</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Portuguese">Portuguese</option>
+                        <option value="Arabic">Arabic</option>
+                        <option value="Hindi">Hindi</option>
+                        {/* Add more languages as necessary */}
+                    </select>
+                </div>
+
+                {/* Explanations Dropdown */}
+                <div className="dropdown-container">
+                    <label htmlFor="explanation-select">Explanations:</label>
+                    <select id="explanation-select" value={explanationType} onChange={(e) => setExplanationType(e.target.value)}>
+                        <option value="Brief explanation">Brief explanation</option>
+                        <option value="Additional information">Additional information</option>
+                        <option value="Only solve the problem">Only solve the problem</option>
+                    </select>
+                </div>
+                
+                {/* Decide Button */}
+                <button className="decide-button" onClick={handleSolutionClick} disabled={selectedImageIndex === null}>
+                    Decide
                 </button>
             </div>
+            {/* New Features Section End */}
         </div>
     );
 };

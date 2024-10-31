@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  background-color: black;
 }
 
 #root {
@@ -8,4 +9,94 @@ html, body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+/* General Styles */
+.app-container {
+  background-color: black; /* Black background */
+  color: white; /* White text */
+  min-height: 100vh; /* Full viewport height */
+  padding: 20px; /* Padding around the app */
+}
+
+/* Header Image styling */
+.header-image {
+  width: 100%; /* Full width */
+  max-width: 600px; /* Constrain maximum width to match dropdown width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Curved corners */
+  margin-bottom: 20px; /* Space below the image */
+}
+
+/* Layout for input container */
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Space below the input container */
+}
+
+/* Task description text area styling */
+.task-description {
+  width: 60%; /* Width of the text area */
+  height: 100px; /* Height of the text area */
+  border-radius: 8px; /* Curved corners */
+  border: 1px solid #333; /* Dark gray border */
+  padding: 10px; /* Padding inside */
+  background-color: #444; /* Dark background for textarea */
+  color: white; /* White text */
+}
+
+/* File input style */
+input[type="file"] {
+  width: 35%; /* Width of the file input */
+  margin-left: 10px; /* Space between the text area and file input */
+  border-radius: 8px; /* Curved corners */
+  background-color: #444; /* Dark background */
+  color: white; /* Text color */
+  border: 1px solid #333; /* Dark gray border */
+}
+
+/* Common styling for dropdown containers */
+.dropdown-container {
+  margin-bottom: 15px; /* Space between dropdowns */
+  border: 1px solid #333; /* Dark gray border around the dropdown */
+  border-radius: 8px; /* Curved corners */
+  padding: 10px; /* Padding around the dropdown */
+}
+
+/* Ensures labels look attached to the dropdown */
+.dropdown-container label {
+  display: block; /* Make the label take the full width above the dropdown */
+  margin-bottom: 5px; /* Space between label and dropdown */
+}
+
+/* Dropdown styling */
+select {
+  width: 100%; /* Full width dropdown */
+  padding: 8px; /* Padding inside dropdown */
+  border-radius: 4px; /* Curved corners */
+  background-color: #444; /* Dark background for dropdown */
+  color: white; /* White text */
+  border: 1px solid #333; /* Dark gray border */
+}
+
+/* Button styling */
+.decide-button {
+  margin-top: 15px; /* Space above the button */
+  padding: 10px 20px; /* Padding inside the button */
+  background-color: #4fc3f7; /* Light blue background */
+  color: black; /* Text color in button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Curved corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover state */
+.decide-button:hover {
+  background-color: #38a1db; /* Darker blue on hover */
+}
+
+/* Additional file item styling */
+.file-item {
+  margin-bottom: 10px; /* Space between files */
 }
