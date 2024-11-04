@@ -1,14 +1,39 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const CheckSolution: React.FC = () => {
-    const location = useLocation();
-    const { imageUrl } = location.state as { imageUrl: string };
+    const [files, setFiles] = useState<File[]>([]);
+    const [uploadResult, setUploadResult] = useState<string | null>(null);
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            const selectedFiles = Array.from(event.target.files);
+            setFiles(selectedFiles);
+        }
+    };
+
+    const handleFileUpload = async () => {
+        const formData = new FormData();
+        files.forEach((file) => formData.append('file', file));
+
+        try {
+            const response = await axios.post('/upload', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+            setUploadResult(response.data.success);
+            sessionStorage.setItem('user_id', response.data.user_id);
+        } catch (error) {
+            console.error("Error uploading files:", error);
+            setUploadResult("File upload failed.");
+        }
+    };
 
     return (
         <div>
-            <h1>Проверка решения</h1>
-            <img src={imageUrl} alt="Check Solution" style={{ maxWidth: '100%', height: 'auto' }} />
+            <h2>Check Solution Page</h2>
+            <input type="file" multiple onChange={handleFileChange} />
+            <button onClick={handleFileUpload}>Upload Files</button>
+            {uploadResult && <p>{uploadResult}</p>}
         </div>
     );
 };
